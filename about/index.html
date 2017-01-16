@@ -1,0 +1,76 @@
+---
+layout: page
+type: page
+title: About me
+---
+
+<br>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="http://music.163.com/outchain/player?type=2&id=26305527&auto=1&height=66"></iframe>
+<br>
+
+<!-- Language Selector -->
+<select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+    <option value="0" selected> 中文 Chinese </option>
+    <option value="1"> 英文 English </option>
+</select>
+
+<!-- Chinese Version -->
+<div class="zh post-container">
+
+    <!--copied from markdown -->
+    <blockquote><p>卢小美~<br>
+    从未忘记那个纯真的我。</p></blockquote>
+
+    <p>我，<strong>卢小美</strong>，祖国母亲的娇艳花朵，大人眼中的五好青年，朋友口中的静若处子，死党心里的巨蟹大妈，我是哆啦A萌，你值得拥有的百变小叮当~
+	</p>
+</div>
+
+<!-- English Version -->
+<div class="en post-container">
+
+	<blockquote><p>Lumm~<br>
+    Never forget the innocent lm。</p></blockquote>
+
+	<p>I'm <strong>Lu Meng</strong>, a student from HeNan University of Science and Technology.I'd like to make friends with someone who has a beautiful heart. This is my online home & blog, where I share thoughts about front-end development, my daily life and other insteresting topics. Feel free to contact me by email if you have any question.
+	</p>
+</div>
+
+<!-- Handle Language Change -->
+<script type="text/javascript">
+    // get nodes
+    var $zh = document.querySelector(".zh");
+    var $en = document.querySelector(".en");
+    var $select = document.querySelector("select");
+
+    // bind hashchange event
+    window.addEventListener('hashchange', _render);
+
+    // handle render
+    function _render(){
+        var _hash = window.location.hash;
+        // en
+        if(_hash == "#en"){
+            $select.selectedIndex = 1;
+            $en.style.display = "block";
+            $zh.style.display = "none";
+        // zh by default
+        }else{
+            // not trigger onChange, otherwise cause a loop call.
+            $select.selectedIndex = 0;
+            $zh.style.display = "block";
+            $en.style.display = "none";
+        }
+    }
+
+    // handle select change
+    function onLanChange(index){
+        if(index == 0){
+            window.location.hash = "#zh"
+        }else{
+            window.location.hash = "#en"
+        }
+    }
+
+    // init
+    _render();
+</script>
